@@ -1,0 +1,5 @@
+El juego del Ahorcado, tambien conocido como "Hangman" o "Colgado", es un juego de lapiz y papel para dos o mas jugadores con origenes inciertos, aunque se cree que surgio en la epoca victoriana.
+
+Tony Augarde, autor de "La Guia de Oxford de Juegos de palabras", menciona que el juego es referido en 1894 en "Juegos tradicionales" de Alice Bertha Gomme bajo el nombre de "Aves, Bestias y Peces". En esa primera version, las reglas eran simples: un jugador anotaba la primera y ultima letra de la palabra de un animal, y el otro jugador adivinaba las letras intermedias.
+
+El juego consiste en que un jugador piensa en una palabra, frase u oracion, y el otro intenta adivinarla sugiriendo letras. Si la letra es correcta, se escribe en su posicion; si no lo es, se dibuja una parte de la figura de un hombre ahorcado. El juego termina cuando el adivinador completa la palabra o cuando el dibujo del ahorcado esta completo.
