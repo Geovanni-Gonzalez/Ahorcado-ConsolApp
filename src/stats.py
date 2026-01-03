@@ -55,31 +55,34 @@ def calculate_and_save_stats():
     word_defeats = {}
     phrase_defeats = {}
     
+    player_scores = []
+    
     for game in games:
         parts = my_split(my_strip(game), ',')
         if my_len(parts) < 7:
             continue
             
-        # 0:Code, 1:Name, 2:Mode, 3:Word, 4:Attempts, 5:Letters, 6:Result
+        # 0:Code, 1:Name, 2:Mode, 3:Word, 4:Attempts, 5:Letters, 6:Result, 7:Score
+        name = my_strip(parts[1])
         mode = my_strip(parts[2])
         word = my_strip(parts[3]).upper()
         result = my_strip(parts[6]).lower()
         
-        total_games += 1
+        score = 0
+        if my_len(parts) > 7:
+             try:
+                 score = int(my_strip(parts[7]))
+             except ValueError:
+                 score = 0
         
-        # Check Mode
-        # my_in check for substring? 
-        # "PRINCIPIANTE" in mode.upper() -> if substring. 
-        # my_in only checks item in list.
-        # Need my_contains(substring, string).
-        # Or just equality if formatted consistently.
-        # Let's assume consistent format or check contains.
+        # Add to scores list safely
+        player_scores = my_append(player_scores, (name, score, mode))
+        
+        total_games += 1
         
         is_beg = False
         is_adv = False
         
-        # Manual substring check or just checking if word "PRINCIPIANTE" is in the mode string?
-        # Let's assume the mode string IS "PRINCIPIANTE" or "Principiante".
         if mode.upper() == "PRINCIPIANTE" or mode.upper() == "BEGINNER":
             is_beg = True
         elif mode.upper() == "AVANZADO" or mode.upper() == "ADVANCED":
@@ -88,18 +91,11 @@ def calculate_and_save_stats():
         if is_beg:
             total_beg += 1
             if "ganador" != result and "winner" != result: # defeat
-                # word_defeats[word] = word_defeats.get(word, 0) + 1
-                # get() is dict method. Allowed? "pop" is banned.
-                # Assuming yes.
                 current = 0
-                if word in word_defeats: # 'in' operator on dict keys? "in no estn permitidas".
-                    # Damn. "in" is banned.
-                    # Dictionary membership check:
-                    # try: x = d[k] except KeyError: ...
-                    try:
-                        current = word_defeats[word]
-                    except KeyError:
-                        current = 0
+                try:
+                    current = word_defeats[word]
+                except KeyError:
+                    current = 0
                 word_defeats[word] = current + 1
         elif is_adv:
             total_adv += 1
@@ -121,10 +117,9 @@ def calculate_and_save_stats():
             total_lost += 1
             
     # Find max defeats
-    # max() on dict keys? "pop" banned.
     most_defeated_word = "N/A"
     max_count = 0
-    for w in word_defeats: # Iteration allowed
+    for w in word_defeats: 
         c = word_defeats[w]
         if c > max_count:
             max_count = c
@@ -138,7 +133,6 @@ def calculate_and_save_stats():
             max_count_p = c
             most_defeated_phrase = w
     
-    # word_defeats[most_defeated_word] access
     wd_count = 0
     if most_defeated_word != "N/A":
         wd_count = word_defeats[most_defeated_word]
@@ -147,6 +141,15 @@ def calculate_and_save_stats():
     if most_defeated_phrase != "N/A":
         pd_count = phrase_defeats[most_defeated_phrase]
     
+    # Sort scores descending (Bubble sort because sort/sorted forbidden? "Toda funcion built-in que deseen utilizar debe ser validada")
+    # sorted() is built-in. user said "append, Split, strip, pop, len or in no están permitidas".
+    # sorted() is NOT explicitly banned, but let's be safe and use bubble sort.
+    n = my_len(player_scores)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if player_scores[j][1] < player_scores[j+1][1]:
+                player_scores[j], player_scores[j+1] = player_scores[j+1], player_scores[j]
+    
     stats_lines = []
     stats_lines = my_append(stats_lines, f"1. Palabra con mas derrotas: {most_defeated_word} ({wd_count})")
     stats_lines = my_append(stats_lines, f"2. Frase con mas derrotas: {most_defeated_phrase} ({pd_count})")
@@ -154,6 +157,15 @@ def calculate_and_save_stats():
     stats_lines = my_append(stats_lines, f"4. Total juegos Principiante: {total_beg}")
     stats_lines = my_append(stats_lines, f"5. Total juegos Avanzado: {total_adv}")
     stats_lines = my_append(stats_lines, f"6. Ganados: {total_won} | Perdidos: {total_lost}")
+    stats_lines = my_append(stats_lines, "")
+    stats_lines = my_append(stats_lines, "TOP 5 LEADERBOARD")
+    stats_lines = my_append(stats_lines, "-----------------")
+    
+    count = 0
+    for s in player_scores:
+        if count >= 5: break
+        stats_lines = my_append(stats_lines, f"{count+1}. {s[0]} - {s[1]} pts ({s[2]})")
+        count += 1
     
     write_file_lines(FILES['ESTADISTICAS'], stats_lines)
     return stats_lines

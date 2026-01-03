@@ -7,6 +7,16 @@ from src.stats import show_history, show_stats, show_help
 def ahorcado():
     while True:
         clear_screen()
+        print(r"""
+  _    _                                                
+ | |  | |                                             
+ | |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __      
+ |  __  |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \  
+ | |  | | (_| | | | | (_| | | | | | | (_| | | | |   
+ |_|  |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                      __/ |                              
+                     |___/                               
+        """)
         print(get_msg('MAIN_MENU').center(50, "="))
         print(get_msg('OPT_ADMIN'))
         print(get_msg('OPT_PLAYER'))

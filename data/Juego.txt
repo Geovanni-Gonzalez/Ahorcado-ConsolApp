@@ -1,0 +1,1 @@
+1, Geovanni, Principiante, PUERTA, 6, ["D", "S", "A", "F", "G", "H", "V"], perdedor, 0

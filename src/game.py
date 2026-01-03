@@ -92,7 +92,7 @@ def format_letters_list(letters):
     res += "]"
     return res
 
-def save_game(player, mode, word, attempts, used_letters, result):
+def save_game(player, mode, word, attempts, used_letters, result, score):
     games = read_file_lines(FILES['JUEGO'])
     
     # Get Next ID
@@ -114,8 +114,8 @@ def save_game(player, mode, word, attempts, used_letters, result):
         
     formatted_letters = format_letters_list(used_letters)
     
-    # 1, Cristian, Principiante, tecnologico, 8, ["A", ...], ganador
-    line = f"{next_id}, {player}, {mode}, {word}, {attempts}, {formatted_letters}, {result}"
+    # 1, Cristian, Principiante, tecnologico, 8, ["A", ...], ganador, 500
+    line = f"{next_id}, {player}, {mode}, {word}, {attempts}, {formatted_letters}, {result}, {score}"
     append_file_line(FILES['JUEGO'], line)
 
 def play(player, mode, is_beginner):
@@ -123,23 +123,31 @@ def play(player, mode, is_beginner):
     target = get_random_word(filepath)
     
     if target is None:
-        print("Error: No words/phrases available.")
+        print(color_text("Error: No words/phrases available.", 'RED'))
         pause()
         return
 
     guessed_letters = []
-    attempts_max = 6 # 0 to 6 indices for stages. 6 wrong guesses -> dead.
+    attempts_max = 6 
     wrong_guesses = 0
+    hints_used = 0
     
     while True:
         clear_screen()
-        print(get_msg('NEW_GAME').center(50, "="))
+        print(color_text(get_msg('NEW_GAME').center(50, "="), 'BLUE'))
         print(f"Player: {player} | Mode: {mode}")
-        print(STAGES[wrong_guesses])
+        
+        # Calculate Current Score for display
+        current_score = ((attempts_max - wrong_guesses) * 100) + (my_len(target) * 10) - (hints_used * 50)
+        if current_score < 0: current_score = 0
+        print(f"Score: {current_score}")
+        
+        print(color_text(STAGES[wrong_guesses], 'YELLOW'))
         
         # Display word
         display = ""
         missing_count = 0
+        missing_chars = []
         for char in target:
             if char == ' ':
                  display += "  "
@@ -148,29 +156,46 @@ def play(player, mode, is_beginner):
             else:
                  display += "_ "
                  missing_count += 1
+                 if my_not_in(char, missing_chars):
+                     missing_chars = my_append(missing_chars, char)
         
         print("\n" + display + "\n")
         print(get_msg('USED_LETTERS') + format_letters_list(guessed_letters))
         print(get_msg('ATTEMPTS') + str(attempts_max - wrong_guesses))
+        print("Enter '!' for a HINT (-50 points)")
         
         if missing_count == 0:
-            print("\n" + get_msg('WIN'))
-            save_game(player, mode, target, wrong_guesses, guessed_letters, "ganador")
+            print("\n" + color_text(get_msg('WIN'), 'GREEN'))
+            beep()
+            save_game(player, mode, target, wrong_guesses, guessed_letters, "ganador", current_score)
             break
             
         if wrong_guesses >= attempts_max:
-            print("\n" + get_msg('LOSE') + target)
-            save_game(player, mode, target, wrong_guesses, guessed_letters, "perdedor")
+            print("\n" + color_text(get_msg('LOSE') + target, 'RED'))
+            beep()
+            save_game(player, mode, target, wrong_guesses, guessed_letters, "perdedor", 0)
             break
             
         print("\n" + get_msg('PROMPT'), end="")
         guess = my_strip(input()).upper()
         
+        if guess == '!':
+            if hints_used >= 2: # Max 2 hints? logic not specified, let's limit.
+                 print("No more hints allowed!")
+                 pause()
+                 continue
+            if my_len(missing_chars) > 0:
+                hint_char = random.choice(missing_chars)
+                guessed_letters = my_append(guessed_letters, hint_char)
+                hints_used += 1
+                print(color_text(f"HINT REVEALED: {hint_char}", 'CYAN'))
+                pause()
+            continue
+
         if my_len(guess) != 1:
             continue
             
-        if not guess.isalpha(): # Allowed? isalpha is string method.
-            # Assuming yes. If not, check ASCII range.
+        if not guess.isalpha(): 
             continue
             
         if my_in(guess, guessed_letters):
@@ -180,6 +205,8 @@ def play(player, mode, is_beginner):
         
         if my_not_in(guess, target):
             wrong_guesses += 1
+            beep()
+            print(color_text("WRONG!", 'RED'))
 
     print("\n" + get_msg('PRESS_C'), end="")
     while True:
