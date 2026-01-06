@@ -1,25 +1,32 @@
 {
+    "project": "Ahorcado ConsolApp",
     "tech": [
-        "Python"
+        "Python 3",
+        "ANSI Console Styling",
+        "Text-based Sound Engine"
     ],
     "features": [
-        "Juego de Ahorcado en Consola",
-        "Modo Multilingüe (Español/Inglés)",
-        "Sistema de Administración Protegido",
-        "Persistencia en Archivos de Texto",
-        "Innovaciones: Colores ANSI, Sonido, Pistas y Ranking"
+        "Functional Hangman Game in Console",
+        "Multilingual Support (Spanish/English)",
+        "Protected Admin System (No built-in functions)",
+        "Text-file Persistence Logic",
+        "ANSI Color Schemes and Piste System"
     ],
     "stack": {
-        "language": "Python 3",
-        "framework": "Console Application",
+        "language": "Python",
+        "framework": "Pure Console",
         "tools": [
-            "Git",
-            "Custom Utils (No Built-ins)"
-        ]
+            "sys",
+            "os",
+            "Git"
+        ],
+        "database": "Text Files (Local Storage)"
     },
-    "screenshots": ["https://raw.githubusercontent.com/Geovanni-González/Ahorcado-ConsolApp/main/screenshots/principalImage.jpg"],
+    "screenshots": [
+        "https://raw.githubusercontent.com/Geovanni-González/Ahorcado-ConsolApp/main/screenshots/principalImage.jpg"
+    ],
     "description": {
-        "es": "Aplicación de consola en Python para el juego del Ahorcado. Implementado desde cero con restricciones técnicas estrictas (sin funciones built-in básicas), incluye gestión administrativa, modos de juego, soporte bilingüe e innovaciones visuales y de jugabilidad.",
-        "en": "Python console application for the Hangman game. Implemented from scratch with strict technical restrictions (no basic built-in functions), featuring administrative management, game modes, bilingual support, and visual/gameplay innovations."
+        "es": "Aplicación de consola en Python para el juego del Ahorcado. Implementado desde cero con restricciones técnicas estrictas (sin funciones built-in básicas), incluye gestión administrativa, modos de juego, soporte bilingüe e innovaciones visuales.",
+        "en": "Python console application for the Hangman game. Implemented from scratch with strict technical restrictions, featuring administrative management, game modes, bilingual support, and visual innovations."
     }
 }
