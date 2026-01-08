@@ -1,32 +1,54 @@
 {
-    "project": "Ahorcado ConsolApp",
-    "tech": [
-        "Python 3",
-        "ANSI Console Styling",
-        "Text-based Sound Engine"
-    ],
-    "features": [
-        "Functional Hangman Game in Console",
-        "Multilingual Support (Spanish/English)",
-        "Protected Admin System (No built-in functions)",
-        "Text-file Persistence Logic",
-        "ANSI Color Schemes and Piste System"
-    ],
-    "stack": {
-        "language": "Python",
-        "framework": "Pure Console",
-        "tools": [
-            "sys",
-            "os",
-            "Git"
+    "en": {
+        "tech": [
+            "Python 3",
+            "ANSI Terminal UI",
+            "Algorithm Design",
+            "Constraint Programming"
         ],
-        "database": "Text Files (Local Storage)"
+        "features": [
+            "Fully functional terminal-based Hangman game",
+            "Full multilingual support (English and Spanish)",
+            "Secured admin system without standard Python built-in helpers",
+            "Robust file persistence logic using raw file handlers",
+            "ANSI-enhanced visual feedback and stylized game state"
+        ],
+        "stack": {
+            "language": "Python 3",
+            "framework": "Native CLI App",
+            "tools": [
+                "ANSI Codes",
+                "Raw File I/O"
+            ],
+            "database": "Structured Text Storage (.txt)"
+        },
+        "screenshots": [],
+        "description": "A technical masterpiece of terminal-based software, developed under extreme programmatic constraints. This Hangman application eschews standard Python high-level functions, implementing its own logical primitives and file management protocols from the ground up. It features an ANSI-powered TUI that delivers a rich visual experience purely through text, demonstrating that professional-grade usability and full-featured administration systems can be achieved with minimal dependencies and pure algorithmic ingenuity."
     },
-    "screenshots": [
-        "https://raw.githubusercontent.com/Geovanni-González/Ahorcado-ConsolApp/main/screenshots/principalImage.jpg"
-    ],
-    "description": {
-        "es": "Aplicación de consola en Python para el juego del Ahorcado. Implementado desde cero con restricciones técnicas estrictas (sin funciones built-in básicas), incluye gestión administrativa, modos de juego, soporte bilingüe e innovaciones visuales.",
-        "en": "Python console application for the Hangman game. Implemented from scratch with strict technical restrictions, featuring administrative management, game modes, bilingual support, and visual innovations."
+    "es": {
+        "tech": [
+            "Python 3",
+            "Interfaz ANSI Terminal",
+            "Diseño de Algoritmos",
+            "Programación con Restricciones"
+        ],
+        "features": [
+            "Juego de Ahorcado completamente funcional en terminal",
+            "Soporte bilingüe completo (Inglés y Español)",
+            "Sistema administrativo asegurado sin ayuda de built-ins estándar",
+            "Lógica robusta de persistencia mediante manejadores de archivo puros",
+            "Retroalimentación visual con ANSI y estados de juego estilizados"
+        ],
+        "stack": {
+            "language": "Python 3",
+            "framework": "Aplicación CLI Nativa",
+            "tools": [
+                "Códigos ANSI",
+                "E/S de Archivos Pura"
+            ],
+            "database": "Almacenamiento en Texto (.txt)"
+        },
+        "screenshots": [],
+        "description": "Una obra maestra técnica de software basado en terminal, desarrollado bajo extremas restricciones programáticas. Esta aplicación de Ahorcado evita las funciones de alto nivel estándar de Python, implementando sus propias primitivas lógicas y protocolos de gestión de archivos desde cero. Cuenta con una TUI potenciada por ANSI que ofrece una rica experiencia visual puramente a través de texto, demostrando un alto grado de usabilidad profesional con dependencias mínimas."
     }
 }
