@@ -1,64 +1,69 @@
-# Proyecto Programado #1: Ahorcado
+﻿# Ahorcado ConsolApp
 
-## Información del Estudiante
+## Descripción
+Juego de Ahorcado para terminal desarrollado en Python. Permite administrar palabras y frases, jugar por niveles y consultar historial o estadísticas mediante archivos de texto.
 
-- **Nombre del Curso**: Programación
-- **Número de semestre y año lectivo**: I Semestre 2026
-- **Nombre del Estudiante**: [Nombre del Estudiante]
-- **Número de carné del estudiante**: [Carné]
-- **Estatus de la entrega**: Excelente
+## Objetivo
+Practicar programación estructurada, validación de entradas, persistencia local y construccion de una experiencia de consola clara.
 
-## Descripción del Problema
+## Tecnologías utilizadas
+- Python 3
+- Interfaz de consola
+- Archivos .txt
+- Códigos ANSI
 
-Este proyecto consiste en una aplicación de consola en Python para jugar al Ahorcado. El sistema permite administrar palabras y frases mediante un módulo administrativo protegido por contraseña, y jugar en dos niveles de dificultad (Principiante y Avanzado). Además, guarda un historial de juegos y estadísticas.
+## Funcionalidades principales
+- Juego en modo principiante y avanzado
+- Módulo administrativo protegido por archivo de acceso
+- Gestión de palabras, frases, ayuda, historial y estadísticas
+- Módulos separados para juego, administración, autenticación y utilidades
 
-## Manual de Usuario
+## Mi rol
+Desarrollé la lógica principal, el flujo de menus, la persistencia en archivos y la organización modular.
 
-### Ejecución
+## Aprendizajes clave
+- Modelado de reglas de juego
+- Lectura y escritura de archivos
+- Validación de opciones y estados
+- Organización de proyectos Python
 
-1. Abra una terminal en la carpeta principal del proyecto.
-2. Ejecute el comando:
+## Instalación y ejecución
+```bash
+cd Ahorcado-ConsolApp
+python main.py
+```
 
-   ```bash
-   python main.py
-   ```
+## Estructura del proyecto
+- main.py: punto de entrada
+- src/: módulos principales
+- data/: archivos de datos
+- screenshots/: captura principal
 
-### Uso
+## Capturas o demo
+![Captura principal](screenshots/principalImage.png)
 
-- **Menú Principal**:
-  - **(A) Opciones Administrativas**: Requiere clave (`admin123`). Permite gestionar palabras y frases.
-  - **(J) Opciones de Jugador**: Accede al juego, historia y estadísticas.
-  - **(S) Salir**: Cierra la aplicación.
+## Estado del proyecto
+Proyecto académico funcional.
 
-- **Juego**:
-  - Seleccione "Nuevo Juego".
-  - Ingrese su nombre.
-  - Seleccione el idioma (ES/EN).
-  - Seleccione el modo (Principiante/Avanzado).
-  - Intente adivinar la palabra letra por letra.
+## Valor técnico demostrado
+Demuestra dominio de Python, modularización, persistencia local y flujos interactivos en terminal.
 
-## Decisiones de Desarrollo
+## Mejoras futuras
+- Agregar pruebas automatizadas
+- Migrar datos a JSON o SQLite
+- Mejorar manejo de archivos faltantes
 
-- **Restricciones Técnicas**: Se implementaron funciones personalizadas (`my_len`, `my_split`, `my_strip`, `my_in`, `my_append`) en `src/utils.py` para cumplir con la restricción de NO utilizar funciones built-in prohibidas (`len`, `split`, `strip`, `append`, `in`).
-- **Persistencia**: Todos los datos (palabras, frases, historial, juegos) se almacenan en archivos de texto en la carpeta `data/`.
-- **Estructura Modular**: El código se dividió en módulos (`admin`, `auth`, `game`, `stats`, `utils`) para facilitar el mantenimiento.
+## Autor
+Geovanni González  
+Estudiante de Ingeniería en Computación  
+GitHub: [Geovanni-Gonzalez](https://github.com/Geovanni-Gonzalez)
 
-## Librerías Usadas
 
-- `os`: Para manejo de archivos y limpieza de pantalla.
-- `random`: Para selección aleatoria de palabras.
-- No se utilizaron librerías externas.
 
-## Análisis de Resultados
 
-- **Objetivos Alcanzados**:
-  - Juego funcional en dos modos.
-  - Gestión administrativa completa (CRUD).
-  - Persistencia de datos.
-  - Soporte bilingüe (Español/Inglés).
-  - Cumplimiento de restricciones de funciones built-in.
-- **Objetivos No Alcanzados**: N/A
 
-## Conclusión
 
-El proyecto cumple con todos los requerimientos funcionales y técnicos establecidos, incluyendo las funcionalidades extra de soporte de idiomas.
+
+
+
+
