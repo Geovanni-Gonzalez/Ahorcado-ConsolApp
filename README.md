@@ -1,5 +1,7 @@
 ﻿# Ahorcado ConsolApp
 
+[![CI](https://github.com/Geovanni-Gonzalez/Ahorcado-ConsolApp/actions/workflows/ci.yml/badge.svg)](https://github.com/Geovanni-Gonzalez/Ahorcado-ConsolApp/actions/workflows/ci.yml)
+
 ## Descripción
 Juego de Ahorcado para terminal desarrollado en Python. Permite administrar palabras y frases, jugar por niveles y consultar historial o estadísticas mediante archivos de texto.
 
