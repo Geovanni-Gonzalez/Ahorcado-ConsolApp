@@ -1,4 +1,6 @@
-﻿# Ahorcado ConsolApp
+# Ahorcado ConsolApp
+
+> **Trilogía Ahorcado — Parte 1 de 3** (S1 2022, proyectos de primer año, conservados como evidencia de evolución): [Parte 1: consola](https://github.com/Geovanni-Gonzalez/Ahorcado-ConsolApp) · [Parte 2: GUI Tkinter](https://github.com/Geovanni-Gonzalez/Ahorcado-GUI-App) · [Parte 3: GUI orientada a objetos](https://github.com/Geovanni-Gonzalez/Ahorcado-GUI-App-POO).
 
 [![CI](https://github.com/Geovanni-Gonzalez/Ahorcado-ConsolApp/actions/workflows/ci.yml/badge.svg)](https://github.com/Geovanni-Gonzalez/Ahorcado-ConsolApp/actions/workflows/ci.yml)
 
